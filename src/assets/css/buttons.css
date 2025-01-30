@@ -1,0 +1,60 @@
+@utility button-padding-x {
+	@apply px-[1em];
+}
+
+@utility button-padding-y {
+	@apply py-[0.5em];
+}
+
+@utility button {
+	@apply button-padding-x button-padding-y rounded-md;
+}
+
+@utility button--primary {
+	@apply button;
+	@apply font-semibold bg-purple-800 text-white;
+
+	@variant hover {
+		@apply bg-purple-900;
+	}
+
+	@variant active {
+		@apply bg-purple-950;
+	}
+}
+
+@utility button--muted {
+	@apply button no-underline text-current;
+	@apply bg-white border border-grey-300;
+
+	@variant hover {
+		@apply bg-grey-50 border-grey-400 text-grey-700;
+	}
+
+	@variant active {
+		@apply bg-grey-100 border-grey-500 text-grey-800;
+	}
+
+	@variant dark {
+		@apply bg-white/20 border-white/20;
+		@variant hover {
+			@apply bg-white/30 border-white/20 text-grey-100;
+		}
+		@variant active {
+			@apply bg-white/40 border-transparent text-grey-50;
+		}
+	}
+}
+
+@utility button--danger {
+	@apply button;
+	@apply font-semibold bg-red-700 text-white;
+
+	@variant hover {
+		@apply bg-red-800;
+	}
+
+	@variant active {
+		@apply bg-red-900;
+	}
+}

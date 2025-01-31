@@ -1,3 +1,4 @@
+/*
 @utility animate-fast {
 	@media (prefers-reduced-motion: no-preference) {
 		--animation-duration: 150ms;
@@ -73,8 +74,60 @@
 		}
 	}
 }
+*/
+
+/**
+ * We need to include manually generated CSS as it seems currently Tailwind v4
+ * doesn't correctly deal with apply with utilities.
+ */
 
 @layer utilities {
+	@media (prefers-reduced-motion: no-preference) {
+		.animate-fast {
+			--animation-duration: 150ms;
+		}
+
+		.animate-fade-in {
+			opacity: 0;
+			animation-duration: var(--animation-duration, 250ms);
+			animation-timing-function: ease-in-out;
+			animation-fill-mode: forwards;
+			animation-name: fadeIn;
+		}
+
+		.animate-fade-in-down {
+			opacity: 0;
+			animation-duration: var(--animation-duration, 250ms);
+			animation-timing-function: ease-in-out;
+			animation-fill-mode: forwards;
+			animation-name: fadeInDown;
+		}
+
+		.animate-fade-in-up {
+			opacity: 0;
+			animation-duration: var(--animation-duration, 250ms);
+			animation-timing-function: ease-in-out;
+			animation-fill-mode: forwards;
+			animation-name: fadeInUp;
+		}
+
+		.animate-fade-in-right {
+			opacity: 0;
+			animation-duration: var(--animation-duration, 250ms);
+			animation-timing-function: ease-in-out;
+			animation-fill-mode: forwards;
+			animation-name: fadeInRight;
+		}
+
+		.animate-fade-in-left {
+			opacity: 0;
+			animation-duration: var(--animation-duration, 250ms);
+			animation-timing-function: ease-in-out;
+			animation-fill-mode: forwards;
+			animation-name: fadeInLeft;
+		}
+	}
+
 	@keyframes fadeIn {
 		0% {
 			opacity: 0;

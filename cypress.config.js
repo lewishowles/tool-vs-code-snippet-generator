@@ -1,4 +1,5 @@
 import { defineConfig } from "cypress";
+import tailwindcss from "@tailwindcss/vite";
 import viteConfig from "./vite.config";
 import vue from "@vitejs/plugin-vue";
 
@@ -12,6 +13,7 @@ export default defineConfig({
 	e2e: {
 		specPattern: "cypress/e2e/**/*.{cy,spec}.{js,jsx,ts,tsx}",
 		baseUrl: "http://localhost:4173",
+		supportFile: "test/cypress/support/commands.js",
 	},
 
 	component: {
@@ -23,7 +25,10 @@ export default defineConfig({
 			bundler: "vite",
 			viteConfig: {
 				...viteConfig,
-				plugins: [vue()],
+				plugins: [
+					vue(),
+					tailwindcss(),
+				],
 			},
 		},
 		viewportWidth: 1000,

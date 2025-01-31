@@ -1,11 +1,13 @@
 @import url("font.css") layer(base);
-@import url("animation.css") layer(base);
-@import url("buttons.css") layer(base);
-@import url("form.css") layer(base);
+@import url("animation.css");
+@import url("buttons.css");
+@import url("form.css");
 @import "tailwindcss";
 
 @plugin "tailwindcss-hocus";
 @plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
 	/* Allow us to use a familiar spelling */

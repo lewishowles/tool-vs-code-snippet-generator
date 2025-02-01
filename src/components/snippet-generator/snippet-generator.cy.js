@@ -15,6 +15,6 @@ describe("snippet-generator", () => {
 
 		cy.fillFormField("snippet-generator-input", "<form-input name=\"your-name\">\n	Your name\n</form-input>");
 
-		cy.getByData("snippet-generator-output").shouldHaveText("\"<form-input name=\\\"your-name\\\">\",\n\"\\tYour name\",\n\"</form-input>\",");
+		cy.getByData("snippet-generator-output").shouldHaveText("\"Your name input\": {\n	\"prefix\": \"yni\",\n	\"body\": [\n		\"<form-input name=\\\"your-name\\\">\",\n		\"\\tYour name\",\n		\"</form-input>\",\n	],\n},");
 	});
 });

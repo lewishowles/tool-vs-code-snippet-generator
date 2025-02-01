@@ -1,8 +1,22 @@
 <template>
 	<div data-test="snippet-generator">
-		<form-textarea v-model="originalCode" class="mb-8" type="textarea" data-test="snippet-generator-input">
-			Code
-		</form-textarea>
+		<form-layout>
+			<form-field v-model="title">
+				Title
+			</form-field>
+
+			<form-field v-model="prefix">
+				Prefix
+
+				<template #help>
+					For multiple prefixes, please comma separate them.
+				</template>
+			</form-field>
+
+			<form-field v-model="originalCode" type="textarea" class="mb-8" data-test="snippet-generator-input">
+				Code
+			</form-field>
+		</form-layout>
 
 		<ui-button v-if="isSupported" class="button--muted relative mb-8" @click="copy(snippet)">
 			<span :class="{ 'invisible': copied }">
@@ -20,32 +34,42 @@
 
 <script setup>
 import { computed, ref } from "vue";
-import { isNonEmptyString } from "@lewishowles/helpers/string";
 import { useClipboard } from "@vueuse/core";
 
 const { copy, copied, isSupported } = useClipboard();
 
+// The title of this snippet
+const title = ref("");
+// The prefix text to activate this snippet.
+const prefix = ref("");
 // Our original code, provided by the user. This is what we are converting.
 const originalCode = ref("");
 
 // Our snippet output. This is the converted code, ready for a snippet JSON
 // file.
 const snippet = computed(() => {
-	if (!isNonEmptyString(originalCode.value)) {
-		return "";
-	}
-
-	let snippet = originalCode.value;
+	let body = originalCode.value;
 
 	// Escape double quotes, unless they're already escaped.
-	snippet = snippet.replace(/"/g, "\\\"");
+	body = body.replace(/"/g, "\\\"");
 
 	// Encode tabs
-	snippet = snippet.replace(/\t/g, "\\t");
+	body = body.replace(/\t/g, "\\t");
 
 	// Wrap each line with a double quote, where it isn't already done.
-	snippet = snippet.split("\n").map(line => `"${line}",`).join("\n");
+	body = body.split("\n").map(line => `		"${line}",`).join("\n");
 
-	return snippet;
+	// Define our prefixes, depending on if there are one or more.
+	const prefixList = prefix.value.split(",").map(p => p.trim());
+	const prefixValue = prefixList.length > 1 ? `[${prefixList.map(p => `"${p}"`).join(", ")}]` : `"${prefixList[0]}"`;
+
+	return [
+		`"${title.value}": {`,
+		`	"prefix": ${prefixValue},`,
+		"	\"body\": [",
+		body,
+		"	],",
+		"},",
+	].join("\n");
 });
 </script>

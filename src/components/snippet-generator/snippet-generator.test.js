@@ -19,9 +19,11 @@ describe("snippet-generator", () => {
 				const wrapper = mount();
 				const vm = wrapper.vm;
 
+				vm.title = "Your name input";
+				vm.prefix = "yni";
 				vm.originalCode = "<form-input name=\"your-name\">\n	Your name\n</form-input>";
 
-				expect(vm.snippet).toBe("\"<form-input name=\\\"your-name\\\">\",\n\"\\tYour name\",\n\"</form-input>\",");
+				expect(vm.snippet).toBe("\"Your name input\": {\n	\"prefix\": \"yni\",\n	\"body\": [\n		\"<form-input name=\\\"your-name\\\">\",\n		\"\\tYour name\",\n		\"</form-input>\",\n	],\n},");
 			});
 		});
 	});

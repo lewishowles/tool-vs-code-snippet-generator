@@ -1,6 +1,6 @@
 {
-	"name": "Starter",
-	"short_name": "Starter",
+	"name": "Snippet Generator for Visual Studio Code",
+	"short_name": "VSCode snippet generator",
 	"icons": [{ "src": "icon-512.png", "sizes": "512x512" }],
 	"background_color": "#ffffff",
 	"theme_color": "#a3004c",

@@ -1,7 +1,7 @@
 {
 	"name": "vscode-snippet-generator",
 	"version": "0.0.1",
-	"description": "A simple tool to speed up the conversion of code to snippets suitable for VSCode",
+	"description": "A tool to help quickly turn code into re-usable VSCode snippets.",
 	"private": true,
 	"type": "module",
 	"scripts": {

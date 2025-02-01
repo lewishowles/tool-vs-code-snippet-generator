@@ -77,6 +77,11 @@
 }
 
 @layer base {
+	::selection {
+		background-color: #a721a0;
+		color: #fff;
+	}
+
 	svg {
 		height: 1em;
 		width: 1em;

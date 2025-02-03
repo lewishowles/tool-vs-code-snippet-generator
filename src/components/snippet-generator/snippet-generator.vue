@@ -1,6 +1,6 @@
 <template>
 	<div data-test="snippet-generator">
-		<form-layout>
+		<form-layout class="mb-8">
 			<form-field v-model="title">
 				Title
 			</form-field>
@@ -13,7 +13,7 @@
 				</template>
 			</form-field>
 
-			<form-field v-model="originalCode" type="textarea" class="mb-8" data-test="snippet-generator-input">
+			<form-field v-model="originalCode" type="textarea" data-test="snippet-generator-input">
 				Code
 			</form-field>
 		</form-layout>

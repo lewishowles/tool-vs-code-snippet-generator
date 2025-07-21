@@ -88,6 +88,11 @@
 		color: #fff;
 	}
 
+	:root {
+		--primary-gradient-start: var(--color-pink-700);
+		--primary-gradient-end: var(--color-purple-800);
+	}
+
 	svg {
 		height: 1em;
 		width: 1em;

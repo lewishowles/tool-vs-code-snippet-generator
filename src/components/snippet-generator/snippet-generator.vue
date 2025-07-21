@@ -1,6 +1,6 @@
 <template>
 	<div data-test="snippet-generator">
-		<form-layout class="mb-8">
+		<form-layout>
 			<form-field v-model="title">
 				Title
 			</form-field>
@@ -17,8 +17,12 @@
 				Code
 			</form-field>
 		</form-layout>
+	</div>
 
-		<ui-button v-if="isSupported" class="button--muted relative mb-8" @click="copy(snippet)">
+	<div>
+		<pre class="mb-8" data-test="snippet-generator-output">{{ snippet }}</pre>
+
+		<ui-button v-if="isSupported" class="button--muted relative" @click="copy(snippet)">
 			<span :class="{ 'invisible': copied }">
 				Copy snippet
 			</span>
@@ -27,8 +31,6 @@
 				Copied
 			</span>
 		</ui-button>
-
-		<pre data-test="snippet-generator-output">{{ snippet }}</pre>
 	</div>
 </template>
 

@@ -1,30 +1,59 @@
 <template>
-	<div class="max-w-xl mx-auto flex flex-col gap-8 px-8 py-12 md:py-20">
-		<div>
-			<h1 class="mb-4">
-				<span class="bg-gradient-to-br from-purple-800 to-pink-800 bg-clip-text text-5xl font-bold text-transparent">Snippet generator</span>
-				<small class="block text-lg font-normal">for Visual Studio Code</small>
-			</h1>
+	<div class="px-8 py-12 md:px-24 md:py-20 flex flex-col items-start">
+		<div class="page-title flex flex-col gap-2 md:flex-row md:items-center md:gap-4 mb-8">
+			<icon-code class="page-title__icon p-5 rounded-full size-16 shrink-0" />
 
-			<p>The process of changing code to something that can be pasted into a VSCode snippet file can be laborious. This tool aims to simplify that process, by quickly formatting a block of code as necessary.</p>
+			<h1 class="flex flex-col gap-2 md:gap-0">
+				<span class="text-5xl font-bold text-white">Snippet generator</span>
+				<small class="text-xl font-normal text-yellow-100 flex items-baseline gap-4">
+					for Visual Studio Code
+					<div class="flex-grow h-px bg-yellow-100 -translate-y-1" />
+				</small>
+			</h1>
 		</div>
 
-		<alert-message>
-			<template #title>
-				Please note
-			</template>
+		<div class="w-full grid md:grid-cols-3 gap-8 md:gap-24">
+			<div class="prose prose-invert">
+				<p>This tool aims to simplify the process of converting a block of code into something that can be used in a VS Code snippet file, which is often a laborious process.</p>
 
-			<template #icon>
-				<icon-info />
-			</template>
+				<p>Please note that this is designed as a time-saving tool, and as such it will simply escape input and add the appropriate template structure. If code is already partially formatted, you may not get expected results.</p>
+			</div>
 
-			This is designed as a time-saving tool, and as such I don't try to do anything too clever here. If code is already partially escaped you may not get the expected outcome.
-		</alert-message>
-
-		<snippet-generator />
+			<snippet-generator />
+		</div>
 	</div>
 </template>
 
 <script setup>
+import { useColorMode } from "@vueuse/core";
+
 import SnippetGenerator from "@/components/snippet-generator/snippet-generator.vue";
+
+useColorMode({ storageKey: "howles:snippet-generator:colour-scheme", disableTransition: false, initialValue: "dark" });
 </script>
+
+<style>
+.page-title {
+	--fade-in-end: 0.8;
+
+	position: relative;
+
+	&:before {
+		background: radial-gradient(ellipse at center, var(--color-neon-pink), transparent 70%);
+		content: "";
+		height: 20rem;
+		left: 0;
+		max-width: 100%;
+		position: absolute;
+		top: -14rem;
+		opacity: 0.5;
+		width: 100%;
+		z-index: -1;
+	}
+}
+
+.page-title__icon {
+	background-image: linear-gradient(to bottom, color-mix(in oklab, var(--color-neon-pink), white 30%), var(--color-neon-pink) 50%);
+	box-shadow: inset 0 0 0 2px var(--color-neon-pink), 0 0 32px var(--color-neon-pink), 0 4px 0 0 var(--color-pink-900);
+}
+</style>

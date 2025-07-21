@@ -43,12 +43,16 @@ useColorMode({ storageKey: "howles:snippet-generator:colour-scheme", disableTran
 		content: "";
 		height: 20rem;
 		left: 0;
-		max-width: 100%;
-		position: absolute;
-		top: -14rem;
 		opacity: 0.5;
-		width: 100%;
+		position: absolute;
+		right: 0;
+		top: -14rem;
 		z-index: -1;
+
+		@media (min-width: 768px) {
+			left: -10rem;
+			right: -10rem;
+		}
 	}
 }
 

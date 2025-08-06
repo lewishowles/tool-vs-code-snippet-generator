@@ -8,4 +8,4 @@ To generate a complete snippet, we need three pieces of information:
 2. The prefix for a snippet, which defines how it will be invoked
 3. The code that will become the body of the snippet.
 
-[View the live site](https://lewishowles.github.io/vscode-snippet-generator/)
+[View the live site](https://lewishowles.github.io/tool-vs-code-snippet-generator/)

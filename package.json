@@ -1,5 +1,5 @@
 {
-	"name": "vscode-snippet-generator",
+	"name": "tool-vs-code-snippet-generator",
 	"version": "0.0.1",
 	"description": "A tool to help quickly turn code into re-usable VSCode snippets.",
 	"private": true,

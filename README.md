@@ -9,3 +9,31 @@ To generate a complete snippet, we need three pieces of information:
 3. The code that will become the body of the snippet.
 
 [View the live site](https://lewishowles.github.io/tool-vs-code-snippet-generator/)
+
+For example, the following code:
+
+```html
+<div>
+	<label for="input">Input</label>
+	<input type="text" id="input" />
+</div>
+```
+
+And the following inputs:
+
+- Title: Simple input
+- Prefix: input, fi
+
+Will produce the following output
+
+```json
+"Simple input": {
+	"prefix": ["input", "fi"],
+	"body": [
+		"<div>",
+		"\t<label for=\"input\">Input</label>",
+		"\t<input type=\"text\" id=\"input\" />",
+		"</div>",
+	],
+},
+```
